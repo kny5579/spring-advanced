@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 @Component
 public class WeatherClient {
@@ -44,7 +45,11 @@ public class WeatherClient {
             }
         }
 
-        throw new ServerException("오늘에 해당하는 날씨 데이터를 찾을 수 없습니다.");
+        return Arrays.stream(weatherArray)
+                .filter(weatherDto -> today.equals(weatherDto.getDate()))
+                .map(WeatherDto::getWeather)
+                .findFirst()
+                .orElseThrow(()->new ServerException("오늘에 해당하는 날씨 데이터를 찾을 수 없습니다."));
     }
 
     private URI buildWeatherApiUri() {
