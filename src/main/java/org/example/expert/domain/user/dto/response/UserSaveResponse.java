@@ -5,9 +5,9 @@ import lombok.Getter;
 @Getter
 public class UserSaveResponse {
 
-    private final String bearerToken;
-
-    public UserSaveResponse(String bearerToken) {
-        this.bearerToken = bearerToken;
-    }
+//    private final String bearerToken;
+//
+//    public UserSaveResponse(String bearerToken) {
+//        this.bearerToken = bearerToken;
+//    }
 }
