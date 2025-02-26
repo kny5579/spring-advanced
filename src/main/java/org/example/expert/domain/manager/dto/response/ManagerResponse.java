@@ -1,6 +1,7 @@
 package org.example.expert.domain.manager.dto.response;
 
 import lombok.Getter;
+import org.example.expert.domain.manager.entity.Manager;
 import org.example.expert.domain.user.dto.response.UserResponse;
 
 @Getter
@@ -12,5 +13,10 @@ public class ManagerResponse {
     public ManagerResponse(Long id, UserResponse user) {
         this.id = id;
         this.user = user;
+    }
+
+    public ManagerResponse(Manager manager) {
+        this.id = manager.getId();
+        this.user = new UserResponse(manager.getUser());
     }
 }
