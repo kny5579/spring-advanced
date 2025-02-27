@@ -1,7 +1,9 @@
 package org.example.expert.client;
 
+import lombok.RequiredArgsConstructor;
 import org.example.expert.client.dto.WeatherDto;
 import org.example.expert.domain.common.exception.ServerException;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +17,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
 @Component
+@RequiredArgsConstructor
 public class WeatherClient {
 
     private final RestTemplate restTemplate;
 
-    public WeatherClient(RestTemplateBuilder builder) {
-        this.restTemplate = builder.build();
-    }
+    @Value("${weather.api.url}")
+    private String weatherApiUrl;
 
     public String getTodayWeather() {
         ResponseEntity<WeatherDto[]> responseEntity =
@@ -39,12 +41,6 @@ public class WeatherClient {
 
         String today = getCurrentDate();
 
-        for (WeatherDto weatherDto : weatherArray) {
-            if (today.equals(weatherDto.getDate())) {
-                return weatherDto.getWeather();
-            }
-        }
-
         return Arrays.stream(weatherArray)
                 .filter(weatherDto -> today.equals(weatherDto.getDate()))
                 .map(WeatherDto::getWeather)
@@ -54,8 +50,7 @@ public class WeatherClient {
 
     private URI buildWeatherApiUri() {
         return UriComponentsBuilder
-                .fromUriString("https://f-api.github.io")
-                .path("/f-api/weather.json")
+                .fromUriString(weatherApiUrl)
                 .encode()
                 .build()
                 .toUri();
