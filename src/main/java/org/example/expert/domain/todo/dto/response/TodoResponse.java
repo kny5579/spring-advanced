@@ -3,6 +3,7 @@ package org.example.expert.domain.todo.dto.response;
 import lombok.Getter;
 import org.example.expert.domain.todo.entity.Todo;
 import org.example.expert.domain.user.dto.response.UserResponse;
+import org.example.expert.domain.user.entity.User;
 
 import java.time.LocalDateTime;
 
@@ -25,5 +26,16 @@ public class TodoResponse {
         this.user = new UserResponse(todo.getUser());
         this.createdAt = todo.getCreatedAt();
         this.modifiedAt = todo.getModifiedAt();
+    }
+
+    //test 코드 용
+    public TodoResponse(Long id, String title, String contents, String weather, UserResponse user, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+        this.weather = weather;
+        this.user = user;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
     }
 }

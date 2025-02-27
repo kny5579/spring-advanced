@@ -18,7 +18,7 @@ public class UserRepositoryTest {
     void 이메일로_사용자를_조회할_수_있다() {
         // given
         String email = "email@email.com";
-        User user = new User(email,"password", UserRole.USER);
+        User user = new User(email, "password", UserRole.USER);
         userRepository.save(user);
 
         // when
@@ -26,15 +26,15 @@ public class UserRepositoryTest {
 
         // then
         assertNotNull(foundUser);
-        assertEquals(email,foundUser.getEmail());
-        assertEquals(UserRole.USER,foundUser.getUserRole());
+        assertEquals(email, foundUser.getEmail());
+        assertEquals(UserRole.USER, foundUser.getUserRole());
     }
 
     @Test
     void 이메일로_사용자의_존재여부를_확인할_수_있다() {
         // given
         String email = "email@email.com";
-        User user = new User(email,"password", UserRole.USER);
+        User user = new User(email, "password", UserRole.USER);
         userRepository.save(user);
 
         // when

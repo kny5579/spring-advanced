@@ -60,7 +60,7 @@ public class UserServiceTest {
         long userId = 1L;
         User user = new User("email@email.com", "oldPassword", UserRole.USER);
         ReflectionTestUtils.setField(user, "id", userId);
-        UserChangePasswordRequest request = new UserChangePasswordRequest("oldPassword","newPassword1");
+        UserChangePasswordRequest request = new UserChangePasswordRequest("oldPassword", "newPassword1");
 
         given(userRepository.findById(anyLong())).willReturn(Optional.of(user));
 

@@ -1,13 +1,10 @@
 package org.example.expert.domain.user.controller;
 
-import org.example.expert.config.AuthUserArgumentResolver;
-import org.example.expert.domain.common.dto.AuthUser;
 import org.example.expert.domain.user.dto.response.UserResponse;
 import org.example.expert.domain.user.entity.User;
 import org.example.expert.domain.user.enums.UserRole;
 import org.example.expert.domain.user.service.UserService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

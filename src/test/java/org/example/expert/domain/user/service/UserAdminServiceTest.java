@@ -14,9 +14,10 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
@@ -55,7 +56,7 @@ public class UserAdminServiceTest {
         given(userRepository.findById(anyLong())).willReturn(Optional.empty());
 
         // when & then
-        assertThrows(InvalidRequestException.class, () -> userAdminService.changeUserRole(userId,request));
+        assertThrows(InvalidRequestException.class, () -> userAdminService.changeUserRole(userId, request));
         verify(userRepository).findById(userId);
     }
 }

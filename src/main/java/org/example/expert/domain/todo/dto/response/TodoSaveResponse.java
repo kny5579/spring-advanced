@@ -3,6 +3,7 @@ package org.example.expert.domain.todo.dto.response;
 import lombok.Getter;
 import org.example.expert.domain.todo.entity.Todo;
 import org.example.expert.domain.user.dto.response.UserResponse;
+import org.example.expert.domain.user.entity.User;
 
 @Getter
 public class TodoSaveResponse {
